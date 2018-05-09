@@ -1,148 +1,110 @@
 <template>
-  <div class="page">
-    <div class="weui-tab">
-      <div class="weui-navbar">
-        <block v-for="(item,index) in tabs" :key="index">
-          <div :id="index" :class="{'weui-bar__item_on':activeIndex == index}" class="weui-navbar__item" @click="tabClick">
-            <div class="weui-navbar__title">{{item}}</div>
-          </div>
-        </block>
-        <div class="weui-navbar__slider" :class="navbarSliderClass"></div>
-      </div>
-      <div class="weui-tab__panel">
-        <div class="weui-tab__content" :hidden="activeIndex != 0">
-          <div class="page__bd page__bd_spacing">
-            <div class="kind-list">
-              <div v-for="(item1,index1) in list" :key="index1">
-                <div class="kind-list__item">
-                  <div :id=item1.id :class="{'kind-list__item-hd_show':item1.open}" class="weui-flex,kind-list__item-hd" @click="kindToggle">
-                    <div class="weui-flex__item">{{item1.name}}</div>
-                    <img class="kind-list__img" :src=" '/static/images/icon_nav_'+item1.id+'.png'">
-                  </div>
-                  <div :class="{'kind-list__item-bd_show':item1.open}" class="kind-list__item-bd">
-                    <div :class="{'weui-cells_show':item1.open}" class="weui-cells">
-                      <div v-for="(item2,index2) in item1.pages" :key="index2">
-                        <navigator class="weui-cell weui-cell_access" :url=" '/pages/examples/'+item2+'/'+item2+ ''">
-                          <div class="weui-cell__bd">{{item2}}</div>
-                          <div class="weui-cell__ft weui-cell__ft_in-access"></div>
-                        </navigator>
-                      </div>
+    <div class="page">
+        <div class="weui-tab">
+            <div class="weui-navbar">
+                <block v-for="(item,index) in tabs" :key="index">
+                    <div :id="index" :class="{'weui-bar__item_on':activeIndex == index}" class="weui-navbar__item" @click="tabClick">
+                        <div class="weui-navbar__title">{{item}}</div>
                     </div>
-                  </div>
-                </div>
-              </div>
+                </block>
+                <div class="weui-navbar__slider" :class="navbarSliderClass"></div>
             </div>
-          </div>
+            <div class="weui-tab__panel">
+                <div class="weui-tab__content" :hidden="activeIndex != 0">
+                    <div class="page__bd page__bd_spacing">
+                        <div class="weui-cells weui-cells_after-title">
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">活动标题</div>
+                                <div class="weui-cell__bd">活动类型</div>
+                                <div class="weui-cell__ft">
+                                    <button class="weui-btn" type="primary">预约</button>
+                                </div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">发起人：XXXX</div>
+                                <div class="weui-cell__bd"></div>
+                                <div class="weui-cell__ft">开始时间-结束时间</div>
+                            </div>
+                        </div>
+                        <div class="weui-cells weui-cells_after-title">
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">活动标题</div>
+                                <div class="weui-cell__bd">活动类型</div>
+                                <div class="weui-cell__ft">
+                                    <button class="weui-btn" type="warn">放鸽子</button>
+                                </div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">发起人：XXXX</div>
+                                <div class="weui-cell__bd"></div>
+                                <div class="weui-cell__ft">开始时间-结束时间</div>
+                            </div>
+                        </div>
+                        <div class="weui-cells weui-cells_after-title">
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">活动标题</div>
+                                <div class="weui-cell__bd">活动类型</div>
+                                <div class="weui-cell__ft">
+                                    <button class="weui-btn" type="default">人未满</button>
+                                </div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">发起人：XXXX</div>
+                                <div class="weui-cell__bd"></div>
+                                <div class="weui-cell__ft">开始时间-结束时间</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-tab__content" :hidden="activeIndex != 1">
+                    <div class="page__bd page__bd_spacing">
+                        <div class="weui-cells weui-cells_after-title">
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">活动标题</div>
+                                <div class="weui-cell__bd">活动类型</div>
+                                <div class="weui-cell__ft">活动结束</div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">发起人：XXXX</div>
+                                <div class="weui-cell__bd"></div>
+                                <div class="weui-cell__ft">开始时间-结束时间</div>
+                            </div>
+                        </div>
+                        <div class="weui-cells weui-cells_after-title">
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">活动标题</div>
+                                <div class="weui-cell__bd">活动类型</div>
+                                <div class="weui-cell__ft">人未齐</div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">发起人：XXXX</div>
+                                <div class="weui-cell__bd"></div>
+                                <div class="weui-cell__ft">开始时间-结束时间</div>
+                            </div>
+                        </div>
+                        <div class="weui-cells weui-cells_after-title">
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">活动标题</div>
+                                <div class="weui-cell__bd">活动类型</div>
+                                <div class="weui-cell__ft">其他原因</div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">发起人：XXXX</div>
+                                <div class="weui-cell__bd"></div>
+                                <div class="weui-cell__ft">开始时间-结束时间</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="weui-tab__content" :hidden="activeIndex != 1">
-          <div class="page__bd page__bd_spacing">
-            <div class="weui-cells weui-cells_after-title">
-              <div class="weui-cell">
-                <div class="weui-cell__hd">
-                  <image :src="icon" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
-                </div>
-                <div class="weui-cell__bd">标题文字</div>
-                <div class="weui-cell__ft">说明文字</div>
-              </div>
-            </div>
-            <div class="weui-cells weui-cells_after-title">
-              <div class="weui-cell">
-                <div class="weui-cell__hd">
-                  <image :src="icon" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
-                </div>
-                <div class="weui-cell__bd">标题文字</div>
-                <div class="weui-cell__ft">说明文字</div>
-              </div>
-            </div>
-            <div class="weui-cells weui-cells_after-title">
-              <div class="weui-cell">
-                <div class="weui-cell__hd">
-                  <image :src="icon" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
-                </div>
-                <div class="weui-cell__bd">标题文字</div>
-                <div class="weui-cell__ft">说明文字</div>
-              </div>
-            </div>
-            <div class="weui-cells weui-cells_after-title">
-              <div class="weui-cell">
-                <div class="weui-cell__hd">
-                  <image :src="icon" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
-                </div>
-                <div class="weui-cell__bd">标题文字</div>
-                <div class="weui-cell__ft">说明文字</div>
-              </div>
-            </div>
-            <div class="weui-cells weui-cells_after-title">
-              <div class="weui-cell">
-                <div class="weui-cell__hd">
-                  <image :src="icon" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
-                </div>
-                <div class="weui-cell__bd">标题文字</div>
-                <div class="weui-cell__ft">说明文字</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
 export default {
     data() {
         return {
-            list: [
-                {
-                    id: "form",
-                    name: "表单",
-                    open: false,
-                    pages: ["button", "list", "input", "slider", "uploader"]
-                },
-                {
-                    id: "widget",
-                    name: "基础组件",
-                    open: false,
-                    pages: [
-                        "article",
-                        "badge",
-                        "flex",
-                        "footer",
-                        "gallery",
-                        "grid",
-                        "icons",
-                        "loadmore",
-                        "panel",
-                        "preview",
-                        "progress",
-                        "swiper"
-                    ]
-                },
-                {
-                    id: "feedback",
-                    name: "操作反馈",
-                    open: false,
-                    pages: ["actionsheet", "dialog", "msg", "picker", "toast"]
-                },
-                {
-                    id: "nav",
-                    name: "导航相关",
-                    open: false,
-                    pages: ["navbar", "tabbar"]
-                },
-                {
-                    id: "search",
-                    name: "搜索相关",
-                    open: false,
-                    pages: ["searchbar"]
-                },
-                {
-                    id: "issues",
-                    name: "issues 需求",
-                    open: false,
-                    pages: ["request"]
-                }
-            ],
             tabs: ["预约中", "已关闭"],
             activeIndex: 0
         };
@@ -161,18 +123,6 @@ export default {
         }
     },
     methods: {
-        kindToggle(e) {
-            var id = e.currentTarget.id,
-                list = this.list;
-            for (var i = 0, len = list.length; i < len; ++i) {
-                if (list[i].id == id) {
-                    list[i].open = !list[i].open;
-                } else {
-                    list[i].open = false;
-                }
-            }
-            this.list = list;
-        },
         tabClick(e) {
             this.activeIndex = e.currentTarget.id;
         }
@@ -183,11 +133,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-/*!
- * WeUI v1.1.1 (https://github.com/weui/weui-wxss)
- * Copyright 2017 Tencent, Inc.
- * Licensed under the MIT license
- */
 /* 局部样式微调 */
 .weui-tab__panel {
     padding-top: 30rpx;
@@ -231,6 +176,9 @@ page,
     // transition: 0.3s;
 }
 
+.weui-cell {
+    line-height: 2.55555556;
+}
 .weui-cells:after,
 .weui-cells:before {
     display: none;

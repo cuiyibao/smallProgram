@@ -7,3 +7,6 @@
   width: auto !important;
   margin-right: 5px !important;
 }
+button{
+  font-size: inherit;
+}
